@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+let obj = {
+	name: '张三',
+	age: 20
+}
+let newObj = new Proxy(obj, {
+	get(target, key) {
+		console.log('get...');
+		return target[key];
+	},
+	set(target, key, newValue) {
+		console.log('set...');
+		target[key] = newValue;
+		return true;
+	},
+	has(target, key) {
+		console.log('in 操作');
+		return true;
+	}
+})
+newObj.name = '李四'; // 触发set
+
+// has的使用场景
+console.log("name" in newObj);
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="./mvvm.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1111111111 -->
+			1. {{message}}
+			<div>
+				{{message}}
+			</div>
+			<div v-html="htmlData"></div>
+			<input v-model="modelData"> {{modelData}}
+		</div>
+		
+		<script type="text/javascript">
+			// 传Options 222222222222
+			let vm = new MyVue({
+				el: '#app',
+				data: {
+					message: '测试数据',
+					htmlData:"html数据",
+					modelData:'model数据'
+				}
+			})
+			// 3333333333
+			setTimeout(()=> {
+				vm.$options.data.message='修改的数据'  // 第666666开始劫持数据
+			},2000)
+		</script>
+	</body>
+</html>

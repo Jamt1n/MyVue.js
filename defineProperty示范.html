@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="./mvvm.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			// 1111111111
+			1. {{message}}
+			<div>
+				{{message}}
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			// 传Options 222222222222
+			// let vm = new MyVue({
+			// 	el: '#app',
+			// 	data: {
+			// 		message: '修改数据'
+			// 	}
+			// })
+			
+			// // 3333333333
+			// setTimeout(()=> {
+			// 	vm.$options.data.message='修改的数据'
+			// },1000)
+			let data = {
+				message: '测试数据',
+				htmlData:"html数据"
+			}
+			// console.log(data);
+			Object.defineProperty(data,'message', {
+				configurable:true,   // 不然delete 删不了
+				enumerable: false,  // 默认false，不能枚举
+				get() {
+					console.log("get..")
+					return "测试数据"
+				},
+				set(newValue) {
+					console.log("set..",newValue)
+				}
+			})
+			data.message = '修改'
+		</script>
+	</body>
+</html>
